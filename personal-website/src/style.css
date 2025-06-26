@@ -1,211 +1,292 @@
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #38b9cf;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #38b9cf;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
 }
+
 a:hover {
-  color: #535bf2;
+    color: #535bf2;
 }
+
+/* Navigation */
 nav {
-  position: relative; 
-  top:0;
-  right: 0px;
-  height: 100%; 
-  opacity: 90%;
-  position: fixed; 
-  z-index: 9999;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
 }
-/*Style for menu button*/
+
 nav #nav-toggle {
-  background: white; 
-  border: none;
-  color: black;
-  font-size: 1rem;
-  cursor: pointer;
-  border: none; 
+    background: white;
+    border: none;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 #nav-menu {
-  background-color: white;
-  max-height: 0;
-  opacity: 0;
-  list-style: none; 
-  visibility: hidden;
-  padding: 0;
-  margin:0;
-  transform: translateX(0px);
-  transition: max-height 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0s 0.5s; 
+    background-color: white;
+    max-height: 0;
+    opacity: 0;
+    list-style: none;
+    visibility: hidden;
+    padding: 0;
+    margin: 10px 0 0 0;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 #nav-menu.active {
-  max-height: 300px;
-  visibility: visible;
-  opacity: 1;
-  flex-direction: row;
-  transform: translateX(-90px);
-  transition: max-height 2s ease-out, opacity 1s ease-out, transform 0.5s ease-out, visibility 0s; 
+    max-height: 200px;
+    visibility: visible;
+    opacity: 1;
+    padding: 10px 0;
 }
 
+#nav-menu li {
+    padding: 8px 15px;
+}
+
+#nav-menu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+#nav-menu li a:hover {
+    color: #646cff;
+}
+
+/* Body and main layout */
 body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
+#content {
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+/* Sections */
 .section {
-  position: relative;
-  height: 100vh; 
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 2rem;
-  padding: 1rem;
-  top: 300px;
-  z-index: 3;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
 }
 
-
-#app {
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0rem;
-  text-align: center;
-}
-
+/* Backpage */
 #backpage {
-  position: fixed; 
-  height: 50vh;
-  width: 100%;
-  z-index: 1;
-  opacity: 1; 
-  background-color: rgb(161, 212, 234);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 100vw;
+    z-index: 1;
+    background-color: rgb(161, 212, 234);
+    transition: opacity 0.3s ease;
+    border-bottom-left-radius: 50% 10vh;
+    border-bottom-right-radius: 50% 10vh;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    opacity: 1;
 }
 
-#home {  
-  z-index: 3; 
-  background: linear-gradient(to bottom, #4682b4 0%, #6fb7d6 100%);
+/* Home section */
+#home {
+    background: linear-gradient(to bottom, #4682b4 0%, #6fb7d6 100%);
+    position: relative;
+    z-index: 10;
+    margin-top: 40vh;
 }
+
 #HomeTop {
-  position:relative;
-  top: 0; 
-  right: 20rem; 
-  padding: 1rem;
-  font-size: 12;
- 
+    margin-bottom: 2rem;
 }
 
+#HomeTop h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#HomeTop p {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#HomeBottom {
+    margin-top: 2rem;
+}
+
+#HomeBottom p {
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Other sections */
 #about {
-  background: linear-gradient(to bottom, #6fb7d6 0%, #4fac87 100%);
+    background: linear-gradient(to bottom, #6fb7d6 0%, #4fac87 100%);
+    z-index: 10;
 }
 
 #portfolio {
-  background: linear-gradient(to bottom, #4fac87 0%, #3a8b6f 100%);
+    background: linear-gradient(to bottom, #4fac87 0%, #3a8b6f 100%);
+    z-index: 10;
 }
+
 #contact {
-  background: linear-gradient(to bottom, #3a8b6f 0%, #2e8b57 100%);
+    background: linear-gradient(to bottom, #3a8b6f 0%, #2e8b57 100%);
+    z-index: 10;
 }
 
-
+/* Footer */
 footer {
-  position: relative;
-  margin-top: auto;
-  width: 100%;
-  text-align: center;
-  background-color: #333;
-  color: #fff;
-  padding:0;
-  z-index: 999;
-  top: 300px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    z-index: 10;
+}
 
-}
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #8139e0aa);
+    filter: drop-shadow(0 0 2em #8139e0aa);
 }
+
 .logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+    filter: drop-shadow(0 0 2em #f7df1eaa);
 }
 
 .card {
-  padding: 2em;
+    padding: 2em;
 }
 
 .read-the-docs {
-  color: #888;
+    color: #888;
 }
 
+/* Buttons */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #a15454;
-  cursor: pointer;
-  transition: border-color 0.25s;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #a15454;
+    cursor: pointer;
+    transition: all 0.25s;
 }
+
 button:hover {
-  background-color: #3d9e2a;
+    background-color: #3d9e2a;
+    transform: translateY(-2px);
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #HomeTop h1 {
+        font-size: 2.5rem;
+    }
+
+    #HomeTop p {
+        font-size: 1.2rem;
+    }
+
+    #HomeBottom p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 1rem;
+    }
+
+    nav {
+        top: 10px;
+        right: 10px;
+    }
+
+    #home {
+        margin-top: 10vh;
+    }
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+
+    a:hover {
+        color: #747bff;
+    }
+
+    button {
+        background-color: #f9f9f9;
+    }
 }
-
-
-
