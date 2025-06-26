@@ -33,24 +33,25 @@ a:hover {
     color: #535bf2;
 }
 
+/* Navigation */
 nav {
-    position: relative;
-    top: 0;
-    right: 0px;
-    height: 100%;
-    opacity: 90%;
     position: fixed;
-    z-index: 9999;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
 }
 
-/*Style for menu button*/
 nav #nav-toggle {
     background: white;
     border: none;
     color: black;
     font-size: 1rem;
     cursor: pointer;
-    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
 }
 
 #nav-menu {
@@ -60,105 +61,145 @@ nav #nav-toggle {
     list-style: none;
     visibility: hidden;
     padding: 0;
-    margin: 0;
-    transform: translateX(0px);
-    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0s 0.5s;
+    margin: 10px 0 0 0;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 #nav-menu.active {
-    max-height: 300px;
+    max-height: 200px;
     visibility: visible;
     opacity: 1;
-    flex-direction: row;
-    transform: translateX(-90px);
-    transition: max-height 2s ease-out, opacity 1s ease-out, transform 0.5s ease-out, visibility 0s;
+    padding: 10px 0;
 }
 
+#nav-menu li {
+    padding: 8px 15px;
+}
+
+#nav-menu li a {
+    color: #333;
+    text-decoration: none;
+}
+
+#nav-menu li a:hover {
+    color: #646cff;
+}
+
+/* Body and main layout */
 body {
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    overflow-x: hidden;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-}
-
-.section {
+#content {
+    width: 100vw;
+    max-width: 100vw;
     position: relative;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+/* Sections */
+.section {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
+    max-width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 2rem;
-    padding: 1rem;
-    top: 300px;
-    z-index: 3;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+    box-sizing: border-box;
 }
 
-
-#app {
-    flex-direction: column;
-    flex: 1;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0rem;
-    text-align: center;
-}
-
+/* Backpage */
 #backpage {
     position: fixed;
-    height: 50vh;
-    width: 100%;
+    top: 0;
+    left: 0;
+    height: 30vh;
+    width: 100vw;
     z-index: 1;
-    opacity: 1;
     background-color: rgb(161, 212, 234);
+    transition: opacity 0.3s ease;
+    border-bottom-left-radius: 50% 10vh;
+    border-bottom-right-radius: 50% 10vh;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    opacity: 1;
 }
 
+/* Home section */
 #home {
-    z-index: 3;
     background: linear-gradient(to bottom, #4682b4 0%, #6fb7d6 100%);
+    position: relative;
+    z-index: 10;
+    margin-top: 40vh;
 }
 
 #HomeTop {
-    position: relative;
-    top: 0;
-    right: 20rem;
-    padding: 1rem;
-    font-size: 12;
-
+    margin-bottom: 2rem;
 }
 
+#HomeTop h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#HomeTop p {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#HomeBottom {
+    margin-top: 2rem;
+}
+
+#HomeBottom p {
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+/* Other sections */
 #about {
     background: linear-gradient(to bottom, #6fb7d6 0%, #4fac87 100%);
+    z-index: 10;
 }
 
 #portfolio {
     background: linear-gradient(to bottom, #4fac87 0%, #3a8b6f 100%);
+    z-index: 10;
 }
 
 #contact {
     background: linear-gradient(to bottom, #3a8b6f 0%, #2e8b57 100%);
+    z-index: 10;
 }
 
-
+/* Footer */
 footer {
     position: relative;
-    margin-top: auto;
     width: 100%;
     text-align: center;
     background-color: #333;
     color: #fff;
-    padding: 0;
-    z-index: 999;
-    top: 300px;
-
+    padding: 2rem;
+    z-index: 10;
 }
 
 .logo {
@@ -184,6 +225,7 @@ footer {
     color: #888;
 }
 
+/* Buttons */
 button {
     border-radius: 8px;
     border: 1px solid transparent;
@@ -193,16 +235,45 @@ button {
     font-family: inherit;
     background-color: #a15454;
     cursor: pointer;
-    transition: border-color 0.25s;
+    transition: all 0.25s;
 }
 
 button:hover {
     background-color: #3d9e2a;
+    transform: translateY(-2px);
 }
 
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #HomeTop h1 {
+        font-size: 2.5rem;
+    }
+
+    #HomeTop p {
+        font-size: 1.2rem;
+    }
+
+    #HomeBottom p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 1rem;
+    }
+
+    nav {
+        top: 10px;
+        right: 10px;
+    }
+
+    #home {
+        margin-top: 10vh;
+    }
 }
 
 @media (prefers-color-scheme: light) {
