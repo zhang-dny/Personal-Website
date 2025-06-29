@@ -141,33 +141,47 @@ function AboutSection() {
     );
 }
 
-function ProjectModal({ project, isOpen, onClose }) {
+interface Project {
+    id: number;
+    title: string;
+    description: string;
+    technologies: string[];
+    github: string;
+    live: string;
+}
+interface ProjectModalProps {
+    project: Project | null;
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     if (!isOpen) return null;
 
     return createPortal(
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <button className="modal-close" onClick={onClose}>×</button>
-                <h2>{project.title}</h2>
+                <h2>{project?.title}</h2>
                 <div className="project-image">
-                    <div className="project-placeholder">{project.title}</div>
+                    <div className="project-placeholder">{project?.title}</div>
                 </div>
-                <p className="project-description">{project.description}</p>
+                <p className="project-description">{project?.description}</p>
                 <div className="project-tech">
                     <h4>Technologies Used:</h4>
                     <div className="tech-tags">
-                        {project.technologies.map((tech, index) => (
+                        {project?.technologies.map((tech, index) => (
                             <span key={index} className="tech-tag">{tech}</span>
                         ))}
                     </div>
                 </div>
                 <div className="project-links">
-                    {project.github && (
+                    {project?.github && (
                         <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
                             View on GitHub
                         </a>
                     )}
-                    {project.live && (
+                    {project?.live && (
                         <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-link">
                             Live Demo
                         </a>
@@ -180,7 +194,7 @@ function ProjectModal({ project, isOpen, onClose }) {
 }
 
 function PortfolioSection() {
-    const [selectedProject, setSelectedProject] = useState(null);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     const projects = [
         {
