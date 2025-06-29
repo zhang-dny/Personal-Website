@@ -98,6 +98,7 @@ body {
     box-sizing: border-box;
     background: #111;
     color: #f5f5f5;
+    font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
 }
 
 #content {
@@ -161,6 +162,33 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.flipping-sentence {
+    font-size: 1.125rem;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.flipping-wrapper {
+    display: inline-block;
+    position: relative;
+    height: 1.5em;
+    min-width: 120px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.flipping-word {
+    position: absolute;
+    inset: 0;
+    /* shorthand for top: 0; right: 0; bottom: 0; left: 0; */
+    text-align: center;
+    font-weight: 600;
 }
 
 .hero-content {

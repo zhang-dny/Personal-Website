@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { createPortal } from 'react-dom';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import './style.css'
 
 function Nav() {
@@ -65,7 +66,8 @@ function Logo() {
 
 function Backpage() {
     const [opacity, setOpacity] = useState(1);
-
+    const [wordIndex, setWordIndex] = useState(0);
+    const words = useMemo(() => ["amazing", "smart", "beautiful", "impactful"], []);
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
@@ -76,13 +78,40 @@ function Backpage() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setWordIndex(prev => (prev + 1) % words.length);
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [words.length]);
 
     return (
         <div id="backpage" style={{ opacity }}>
             <div className="hero-content">
                 <h1>Danny Zhang</h1>
                 <p>A personal website and learning experience.</p>
-                <p>Imagine the limitless possibilities of what one could create.</p>
+                <p className="flipping-sentence">
+                    Imagine the limitless possibilities of what one could create with something
+                </p>
+                <p className="flipping-sentence">
+                    <span className="flipping-wrapper">
+                        {words.map((word, i) => (
+                            <motion.span
+                                key={i}
+                                className="flipping-word"
+                                initial={{ opacity: 0, y: '-100%' }}
+                                animate={
+                                    wordIndex === i
+                                        ? { opacity: 1, y: '0%' }
+                                        : { opacity: 0, y: wordIndex > i ? '-100%' : '100%' }
+                                }
+                                transition={{ type: 'spring', stiffness: 60, damping: 15 }}
+                            >
+                                {word}
+                            </motion.span>
+                        ))}
+                    </span>
+                </p>
             </div>
         </div>
     );
