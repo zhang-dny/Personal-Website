@@ -51,6 +51,8 @@ nav #nav-toggle {
     cursor: pointer;
     padding: 8px 12px;
     border-radius: 4px;
+    width: 90px;
+    text-align: center;
 }
 
 #nav-menu {
@@ -340,7 +342,9 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    outline: none;
+    /* Remove default */
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.6);
 }
 
 /* Responsive design */
@@ -530,18 +534,21 @@ button:focus-visible {
     font-size: 2rem;
     cursor: pointer;
     color: #f5f5f5;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 6px;
     transition: all 0.3s ease;
+    padding: 0;
+    line-height: 1;
 }
 
 .modal-close:hover {
-    background: #222;
-    color: #fff;
+    background: none;
+    transform: none;
+    color: #babcbf;
 }
 
 .modal-content h2 {
