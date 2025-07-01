@@ -155,7 +155,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    min-height: 100dvh;
+    height: auto;
     width: 100vw;
     z-index: 1;
     background: linear-gradient(135deg, #587175 0%, #222 100%);
@@ -164,6 +165,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 2rem 0.5rem;
 }
 
 .flipping-sentence {
@@ -235,7 +237,8 @@ body {
     background: linear-gradient(to bottom, #181818 0%, #222 100%);
     position: relative;
     z-index: 10;
-    margin-top: 100vh;
+    margin-top: 100dvh;
+    padding-top: 0;
     /* Start after the full backpage */
 }
 
@@ -381,7 +384,8 @@ button:focus-visible {
     }
 
     #home {
-        margin-top: 10vh;
+        margin-top: 100dvh;
+        padding-top: 0;
     }
 }
 
