@@ -71,7 +71,7 @@ function Backpage() {
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
-            const fadeDistance = 400;
+            const fadeDistance = 500;
             const newOpacity = Math.max(0, 1 - scrollY / fadeDistance);
             setOpacity(newOpacity);
         };
