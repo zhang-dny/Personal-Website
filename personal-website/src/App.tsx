@@ -51,7 +51,7 @@ function Logo() {
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
-            setIsVisible(scrollY > 100); // Show logo after scrolling 100px
+            setIsVisible(scrollY > 420); // Show logo after scrolling 100px
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -66,18 +66,30 @@ function Logo() {
 
 function Backpage() {
     const [opacity, setOpacity] = useState(1);
+    const [scale, setScale] = useState(1);
     const [wordIndex, setWordIndex] = useState(0);
     const words = useMemo(() => ["amazing", "smart", "beautiful", "impactful"], []);
+
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
             const fadeDistance = 500;
+
+            // Opacity effect (existing)
             const newOpacity = Math.max(0, 1 - scrollY / fadeDistance);
             setOpacity(newOpacity);
+
+            // Scale effect - starts when content sections come into view
+            // Scale from 1.0 (100%) to 0.7 (70%) over the same distance
+            const scaleRange = 0.3; // 1.0 - 0.7 = 0.3
+            const newScale = Math.max(0.7, 1 - (scrollY / fadeDistance) * scaleRange);
+            setScale(newScale);
         };
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setWordIndex(prev => (prev + 1) % words.length);
@@ -87,7 +99,13 @@ function Backpage() {
 
     return (
         <div id="backpage" style={{ opacity }}>
-            <div className="hero-content">
+            <div
+                className="hero-content"
+                style={{
+                    transform: `scale(${scale})`,
+                    transition: 'transform 0.1s ease-out'
+                }}
+            >
                 <h1>Danny Zhang</h1>
                 <p>A personal website and learning experience.</p>
                 <p className="flipping-sentence">
