@@ -232,8 +232,8 @@ body {
     }
 }
 
-/* Home section */
-#home {
+/* About section */
+#about {
     background: linear-gradient(to bottom, #181818 0%, #222 100%);
     position: relative;
     z-index: 10;
@@ -242,30 +242,15 @@ body {
     /* Start after the full backpage */
 }
 
-#HomeTop {
-    margin-bottom: 2rem;
-}
 
-#HomeTop h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-#HomeTop p {
-    font-size: 1.3rem;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
 
 /* Other sections */
-#about {
+#portfolio {
     background: linear-gradient(to bottom, #222 0%, #181818 100%);
     z-index: 10;
 }
 
-#portfolio {
+#working-page {
     background: linear-gradient(to bottom, #181818 0%, #222 100%);
     z-index: 10;
 }
@@ -366,13 +351,7 @@ button:focus-visible {
         font-size: 1.2rem;
     }
 
-    #HomeTop h2 {
-        font-size: 2rem;
-    }
 
-    #HomeTop p {
-        font-size: 1rem;
-    }
 
     .section {
         padding: 1rem;
@@ -383,7 +362,7 @@ button:focus-visible {
         right: 10px;
     }
 
-    #home {
+    #about {
         margin-top: 100dvh;
         padding-top: 0;
     }
@@ -402,6 +381,255 @@ button:focus-visible {
     button {
         background-color: #f9f9f9;
     }
+}
+
+/* Tabbed Interface */
+.tabs-container {
+    margin-top: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.tabs-nav {
+    display: flex;
+    border-bottom: 2px solid #333;
+    margin-bottom: 2rem;
+    gap: 0;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    position: relative;
+}
+
+.tab-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    transform: none;
+}
+
+.tab-btn.active {
+    color: #fff;
+    border-bottom-color: #646cff;
+    background: rgba(100, 108, 255, 0.1);
+}
+
+.tabs-content {
+    min-height: 400px;
+    height: 400px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.tab-panel {
+    animation: fadeIn 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Languages Grid */
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Flip Card Structure */
+.flip-card {
+    perspective: 1000px;
+    width: 100%;
+    height: 180px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+}
+
+.flip-card-front {
+    background: rgba(30, 30, 30, 0.6);
+    transition: all 0.3s ease;
+}
+
+.flip-card-back {
+    background: rgba(20, 20, 20, 0.9);
+    border-color: #444;
+    transform: rotateY(180deg);
+}
+
+.language-card {
+    cursor: pointer;
+}
+
+.language-card:hover .flip-card-front {
+    background: rgba(40, 40, 40, 0.8);
+    border-color: #555;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.language-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.language-card h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.level {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.level.advanced {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: #fff;
+}
+
+.level.intermediate {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: #fff;
+}
+
+.level.beginner {
+    background: linear-gradient(135deg, #6366F1, #4F46E5);
+    color: #fff;
+}
+
+/* Progress Ring */
+.progress-ring-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-background {
+    opacity: 0.3;
+}
+
+.progress-ring-progress {
+    transition: stroke-dashoffset 0.8s ease-in-out;
+    filter: drop-shadow(0 0 6px currentColor);
+}
+
+.progress-text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+}
+
+.progress-percentage {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+}
+
+.progress-label {
+    font-size: 0.7rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.2rem;
+}
+
+/* Tools List */
+.tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tool-tag {
+    background: linear-gradient(135deg, #374151, #4B5563);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #6B7280;
+}
+
+.tool-tag:hover {
+    background: linear-gradient(135deg, #4B5563, #6B7280);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Portfolio Projects Grid */
@@ -579,11 +807,68 @@ button:focus-visible {
     margin-bottom: 0.5rem;
 }
 
+.tech-scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
+}
+
+.tech-tags.scrollable {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    margin-bottom: 0;
+    padding: 0.25rem 0;
+    flex: 1;
+}
+
+.tech-tags.scrollable::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+.tech-scroll-btn {
+    background: rgba(35, 37, 38, 0.8);
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.tech-scroll-btn:hover:not(.disabled) {
+    background: rgba(65, 67, 69, 0.9);
+    border-color: #666;
+    transform: scale(1.1);
+}
+
+.tech-scroll-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .tech-tag {
@@ -593,6 +878,8 @@ button:focus-visible {
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .project-links {
@@ -644,5 +931,95 @@ button:focus-visible {
 
     .project-link {
         text-align: center;
+    }
+
+    .tech-scroll-container {
+        gap: 0.25rem;
+    }
+
+    .tech-scroll-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+    }
+
+    .tech-tag {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    /* Tabbed Interface Responsive */
+    .tabs-container {
+        margin-top: 1.5rem;
+    }
+
+    .tabs-content {
+        height: 350px;
+        min-height: 350px;
+    }
+
+    .tabs-nav {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .tab-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        border-bottom: none;
+        border-right: 3px solid transparent;
+    }
+
+    .tab-btn.active {
+        border-bottom-color: transparent;
+        border-right-color: #646cff;
+    }
+
+    .languages-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+
+    .flip-card {
+        height: 160px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        padding: 1rem 0.5rem;
+    }
+
+    .language-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+
+    .language-card h4,
+    .flip-card-back h4 {
+        font-size: 0.9rem;
+    }
+
+    .level {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .progress-ring {
+        width: 60px;
+        height: 60px;
+    }
+
+    .progress-percentage {
+        font-size: 1.1rem;
+    }
+
+    .progress-label {
+        font-size: 0.6rem;
+    }
+
+    .tool-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
     }
 }
